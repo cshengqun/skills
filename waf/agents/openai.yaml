@@ -1,0 +1,4 @@
+interface:
+  display_name: "七步世界分析法 (WAF)"
+  short_description: "从事实一路分析到未来与行动"
+  default_prompt: "Use $waf 分析这件事，从事实、原因、系统、影响、规律、未来到行动给出结构化判断。"

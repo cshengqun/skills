@@ -1,6 +1,6 @@
 ---
 name: waf
-description: Use when the user wants a structured analysis of an event, decision, policy, conflict, trend, or organizational problem that goes beyond summary into root cause, system classification, impact, long-term principles, future scenarios, and concrete action. This skill is named WAF and represents 七步世界分析法. Relevant for prompts such as "分析这件事", "为什么会这样", "它属于哪个系统", "未来会怎样", or "我该怎么办".
+description: Use when the user wants a structured analysis of an event, decision, policy, conflict, trend, or organizational problem that goes beyond summary into root cause, system classification, impact, long-term principles, future scenarios, and concrete action. Also use when the user wants to understand how a business model makes money or how a product works; the Fact step includes a mechanism reconstruction block for that. This skill is named WAF and represents 七步世界分析法. Relevant for prompts such as "分析这件事", "为什么会这样", "它怎么赚钱的", "这个产品怎么实现的", "它属于哪个系统", "未来会怎样", or "我该怎么办".
 ---
 
 # WAF：七步世界分析法
@@ -48,11 +48,36 @@ description: Use when the user wants a structured analysis of an event, decision
 - 列出 3-6 条已知事实
 - 单独写出假设和未知点
 
+机制还原（条件启用）：
+
+当分析对象不是单一事件，而是一个持续运转的东西——商业模式、产品、系统——时，在 Fact 中额外增加「机制还原」子块，回答“它实际上是怎么转的”。此时“变化前后”可以弱化为背景，运作链路成为 Fact 的主体。
+
+注意与 Step 3 的分工：机制还原描述内部要素如何咬合，System 只负责选择分析视角（用哪个系统的镜头看），不要把运作细节塞进 System。
+
+按对象选择要素：
+
+- 商业模式（怎么赚钱）：
+  - 收入流：钱从谁那里来、按什么名目收、各占多大比例
+  - 成本结构：钱主要花在哪里，固定成本与可变成本如何分布
+  - 关键资源：靠什么稀缺资源或能力维持运转
+  - 关键流程：价值如何被生产和交付
+  - 自增强循环：哪些环节互相强化形成飞轮（若有）
+- 产品（怎么实现）：
+  - 用户侧链路：用户从进入到完成目标经过哪些步骤
+  - 系统侧链路：数据如何流转、各模块如何调用
+  - 核心模块：决定体验的关键算法、规则或组件
+  - 冷启动与边界：初始数据和用户从哪来，能力边界在哪
+  - 商业闭环：产品如何接入收入（若有）
+
+机制还原只写可观察、可验证的运作事实，不评价好坏；评价留给 Impact/Decision，归因留给 Cause。
+
 常见错误：
 
 - 把判断当事实
 - 一上来解释原因，跳过事实澄清
 - 只写结论，不写变化前后
+- 把“怎么赚钱/怎么实现”塞进 System——System 是视角分类，机制还原属于 Fact
+- 机制还原写成评价（如“这个模式很先进”），而不是链路和要素
 
 ## Step 2: Cause
 
@@ -196,6 +221,7 @@ description: Use when the user wants a structured analysis of an event, decision
 1. Fact
 - 一句话概括：
 - 已知事实：
+- 机制还原（对象为模式/产品时启用）：
 - 假设与未知：
 
 2. Cause
@@ -235,6 +261,7 @@ description: Use when the user wants a structured analysis of an event, decision
 在结束前，逐项自检：
 
 - 事实和推测是否明确分开
+- 涉及商业模式或产品时，Fact 是否完成机制还原（要素如何咬合），而不是只在 System 贴标签
 - 原因是否已经穿透到驱动层，而不只是停在症状
 - 系统归类是否给出依据，而不是只贴标签
 - 影响是否覆盖了对象和传导路径
